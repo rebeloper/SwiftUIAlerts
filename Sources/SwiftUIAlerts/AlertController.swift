@@ -11,11 +11,23 @@ public class AlertController: ObservableObject {
     
     @Published var alertDetails: AlertDetails?
     
-    public func present(_ type: AlertType = .alert, title: String, message: String, buttons: [AlertButton] = []) {
-        self.alertDetails = AlertDetails(type: type, title: title, message: message, buttons: buttons.count == 0 ? [AlertButton(title: "OK")] : buttons)
+    /// Presents an alert / confirmation dialog
+    /// - Parameters:
+    ///   - type: Type, defaults to `.alert`
+    ///   - title: Title
+    ///   - message: Message
+    ///   - buttons: Buttons, defaults to on OK button
+    public func present(_ type: AlertType = .alert, title: String, message: String, buttons: [AlertButton] = [AlertButton(title: "OK")]) {
+        self.alertDetails = AlertDetails(type: type, title: title, message: message, buttons: buttons)
     }
     
-    public func present(_ type: AlertType = .alert, title: String = "Error", error: Error, buttons: [AlertButton] = []) {
-        self.alertDetails = AlertDetails(type: type, title: title, message: error.localizedDescription, buttons: buttons.count == 0 ? [AlertButton(title: "OK")] : buttons)
+    /// Presents an error alert
+    /// - Parameters:
+    ///   - type: Type, defaults to `.alert`
+    ///   - title: Title
+    ///   - error: Error
+    ///   - buttons: Buttons, defaults to on OK button
+    public func present(_ type: AlertType = .alert, title: String = "Error", error: Error, buttons: [AlertButton] = [AlertButton(title: "OK")]) {
+        self.alertDetails = AlertDetails(type: type, title: title, message: error.localizedDescription, buttons: buttons)
     }
 }

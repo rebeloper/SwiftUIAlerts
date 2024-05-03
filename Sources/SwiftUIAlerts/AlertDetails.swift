@@ -13,7 +13,3 @@ public struct AlertDetails {
     public let message: String
     public let buttons: [AlertButton]
 }
-
-public enum AlertType {
-    case alert, confirmationDialog
-}

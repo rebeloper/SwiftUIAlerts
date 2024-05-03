@@ -8,6 +8,8 @@
 import SwiftUI
 
 public extension EnvironmentValues {
+    
+    /// Environment to present alerts / confrimation dialogs
     var alertController: AlertController {
         get {
             return self[AlertControllerKey.self]
