@@ -48,7 +48,7 @@ public extension View {
             content(item).usesAlertController()
         }
     }
-    
+#if !os(macOS)
     /// Presents a modal view with an `alertController` as an `Environment` that covers as much of the screen as
     /// possible when binding to a Boolean value you provide is true.
     /// - Parameters:
@@ -83,4 +83,5 @@ public extension View {
             content(item).usesAlertController()
         }
     }
+#endif
 }
