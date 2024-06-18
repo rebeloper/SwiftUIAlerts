@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@MainActor
 public class AlertController: ObservableObject {
     
     @Published var alertDetails: AlertDetails?
@@ -17,7 +18,7 @@ public class AlertController: ObservableObject {
     ///   - title: Title
     ///   - message: Message
     ///   - buttons: Buttons, defaults to on OK button
-    @MainActor public func present(_ type: AlertType = .alert, title: String, message: String, buttons: [AlertButton] = [AlertButton(title: "OK")]) {
+    public func present(_ type: AlertType = .alert, title: String, message: String, buttons: [AlertButton] = [AlertButton(title: "OK")]) {
         self.alertDetails = AlertDetails(type: type, title: title, message: message, buttons: buttons)
     }
     
@@ -27,7 +28,7 @@ public class AlertController: ObservableObject {
     ///   - title: Title
     ///   - error: Error
     ///   - buttons: Buttons, defaults to on OK button
-    @MainActor public func present(_ type: AlertType = .alert, title: String = "Error", error: Error, buttons: [AlertButton] = [AlertButton(title: "OK")]) {
+    public func present(_ type: AlertType = .alert, title: String = "Error", error: Error, buttons: [AlertButton] = [AlertButton(title: "OK")]) {
         self.alertDetails = AlertDetails(type: type, title: title, message: error.localizedDescription, buttons: buttons)
     }
 }
