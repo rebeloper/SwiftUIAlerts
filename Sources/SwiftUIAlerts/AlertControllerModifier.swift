@@ -26,12 +26,12 @@ struct AlertControllerModifier: ViewModifier {
                     isConfirmationDialogPresented = true
                 }
             })
-            .onChange(of: isAlertPresented) { _, newValue in
+            .onChange(of: isAlertPresented) { newValue in
                 if !newValue {
                     alertController.alertDetails = nil
                 }
             }
-            .onChange(of: isConfirmationDialogPresented) { _, newValue in
+            .onChange(of: isConfirmationDialogPresented) { newValue in
                 if !newValue {
                     alertController.alertDetails = nil
                 }

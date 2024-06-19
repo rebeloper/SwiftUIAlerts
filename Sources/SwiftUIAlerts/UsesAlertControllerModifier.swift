@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UsesAlertControllerModifier: ViewModifier {
     
-    @State private var alertController = AlertController()
+    @StateObject private var alertController = AlertController()
     
     func body(content: Content) -> some View {
         content
