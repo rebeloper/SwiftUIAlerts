@@ -7,6 +7,6 @@
 
 import Foundation
 
-public enum AlertType {
+public enum AlertType: Equatable {
     case alert, confirmationDialog
 }
