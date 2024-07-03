@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct AlertDetails {
+public struct AlertDetails: Equatable {
     public let type: AlertType
     public let title: String
     public let message: String
