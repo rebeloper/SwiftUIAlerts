@@ -19,6 +19,7 @@ struct AlertControllerModifier: ViewModifier {
             .confirmationDialog(alertController.alertDetails?.title ?? "", isPresented: $isConfirmationDialogPresented, actions: buttons, message: message)
             .onReceive(of: alertController.alertDetails) { newValue in
                 guard let newValue else { return }
+                guard newValue.title != "" else { return }
                 switch newValue.type {
                 case .alert:
                     isAlertPresented = true
