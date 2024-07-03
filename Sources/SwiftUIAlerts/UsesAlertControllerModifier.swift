@@ -17,3 +17,13 @@ struct UsesAlertControllerModifier: ViewModifier {
             .environment(\.alertController, alertController)
     }
 }
+
+struct UsesAlertControllerInModalModifier: ViewModifier {
+    
+    @Environment(\.alertController) private var alertController
+    
+    func body(content: Content) -> some View {
+        content
+            .environment(\.alertController, alertController)
+    }
+}

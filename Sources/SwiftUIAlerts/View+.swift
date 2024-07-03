@@ -14,6 +14,11 @@ public extension View {
         modifier(UsesAlertControllerModifier())
     }
     
+    /// Sets up the `alertController` as an `Environment`
+    func usesAlertControllerInModal() -> some View {
+        modifier(UsesAlertControllerInModalModifier())
+    }
+    
     /// Presents a sheet with an `alertController` as an `Environment` when a binding to a Boolean value that you
     /// provide is true.
     /// - Parameters:
@@ -26,7 +31,7 @@ public extension View {
                                        onDismiss: (() -> Void)? = nil,
                                        @ViewBuilder content: @escaping () -> Content) -> some View {
         self.sheet(isPresented: isPresented, onDismiss: onDismiss) {
-            content().usesAlertController()
+            content().usesAlertControllerInModal()
         }
     }
     
@@ -45,7 +50,7 @@ public extension View {
                                                            onDismiss: (() -> Void)? = nil,
                                                            @ViewBuilder content: @escaping (Item) -> Content) -> some View {
         self.sheet(item: item, onDismiss: onDismiss) { item in
-            content(item).usesAlertController()
+            content(item).usesAlertControllerInModal()
         }
     }
 #if !os(macOS)
@@ -60,7 +65,7 @@ public extension View {
                                                  onDismiss: (() -> Void)? = nil,
                                                  @ViewBuilder content: @escaping () -> Content) -> some View {
         self.fullScreenCover(isPresented: isPresented, onDismiss: onDismiss) {
-            content().usesAlertController()
+            content().usesAlertControllerInModal()
         }
     }
     
@@ -80,7 +85,7 @@ public extension View {
                                                                      onDismiss: (() -> Void)? = nil,
                                                                      @ViewBuilder content: @escaping (Item) -> Content) -> some View {
         self.fullScreenCover(item: item, onDismiss: onDismiss) { item in
-            content(item).usesAlertController()
+            content(item).usesAlertControllerInModal()
         }
     }
 #endif
