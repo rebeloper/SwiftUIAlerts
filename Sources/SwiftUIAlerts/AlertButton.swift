@@ -19,11 +19,27 @@ public struct AlertButton: Identifiable, Equatable {
     ///   - title: Title
     ///   - role: Role, defaults to `nil`
     ///   - action: action triggered on the tap of the button, defaults to `nil`
-    public init(title: String,role: ButtonRole? = nil, action: (() -> Void)? = nil) {
+    public init(title: String, role: ButtonRole? = nil, action: (() -> Void)? = nil) {
         self.title = title
         self.role = role
         self.action = action
     }
     
+    /// Alert Button with predefined title and role without any action
+    /// - Parameter type: Alert button type
+    public init(_ type: AlertButtonType) {
+        switch type {
+        case .cancel:
+            self.title = "Cancel"
+            self.role = .cancel
+            self.action = nil
+        case .ok:
+            self.title = "OK"
+            self.role = nil
+            self.action = nil
+        }
+    }
+    
     public static func == (lhs: AlertButton, rhs: AlertButton) -> Bool { true }
+    
 }
