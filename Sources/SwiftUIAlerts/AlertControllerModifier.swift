@@ -16,7 +16,7 @@ struct AlertControllerModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .alert(alertController.alertDetails?.title ?? "", isPresented: $isAlertPresented, actions: buttons, message: message)
-            .confirmationDialog(alertController.alertDetails?.title ?? "", isPresented: $isConfirmationDialogPresented, actions: buttons, message: message)
+            .confirmationDialog(alertController.alertDetails?.title ?? "", isPresented: $isConfirmationDialogPresented, titleVisibility: alertController.alertDetails?.title != "" ? .visible : .hidden, actions: buttons, message: message)
             .onChange(of: alertController.alertDetails) { _, newValue in
                 guard let newValue else { return }
                 switch newValue.type {
@@ -46,7 +46,12 @@ struct AlertControllerModifier: ViewModifier {
         }
     }
     
+    @ViewBuilder
     func message() -> some View {
-        Text(alertController.alertDetails?.message ?? "")
+        if alertController.alertDetails?.message != "" {
+            Text(alertController.alertDetails?.message ?? "")
+        } else {
+            EmptyView()
+        }
     }
 }
